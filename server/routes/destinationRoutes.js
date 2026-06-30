@@ -1,9 +1,13 @@
 const express = require('express');
 const router = express.Router();
+const {
+  getDestinations,
+  getDestinationById,
+  createDestination,
+} = require('../controllers/destinationController');
 
-// TODO: search, get all, get by id
-router.get('/', (req, res) => {
-  res.json({ message: 'Destination routes working — build search & CRUD here' });
-});
+router.get('/', getDestinations);
+router.get('/:id', getDestinationById);
+router.post('/', createDestination);
 
 module.exports = router;
