@@ -44,7 +44,7 @@ wanderwise/
 | Yuvanshi Thakur | Frontend — Home & Search |
 | Arashdeep Kaur | Frontend — Trip Planner & Itinerary |
 | Gayatri Sharma | Frontend — Budget & Wishlist |
-| Aditya | Frontend — Extras (Emergency, Dashboard) & Testing |
+| Aditya Bishnoi | Frontend — Extras (Emergency, Dashboard) & Testing |
 
 ## Color Theme — Sunset Coral
 
