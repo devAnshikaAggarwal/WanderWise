@@ -39,12 +39,12 @@ wanderwise/
 
 | Member | Role |
 |---|---|
-| You | Team Lead + Backend (API, DB, Auth, Deployment) |
-| Member 2 | Frontend — Auth pages (Login, Register) |
-| Member 3 | Frontend — Home & Search |
-| Member 4 | Frontend — Trip Planner & Itinerary |
-| Member 5 | Frontend — Budget & Wishlist |
-| Member 6 | Frontend — Extras (Emergency, Dashboard) & Testing |
+| Anshika Aggarwal | Team Lead + Backend (API, DB, Auth, Deployment) |
+| Sneha Sharma | Frontend — Auth pages (Login, Register) |
+| Yuvanshi Thakur | Frontend — Home & Search |
+| Arashdeep Kaur | Frontend — Trip Planner & Itinerary |
+| Gayatri Sharma | Frontend — Budget & Wishlist |
+| Aditya | Frontend — Extras (Emergency, Dashboard) & Testing |
 
 ## Color Theme — Sunset Coral
 
