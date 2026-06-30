@@ -1,10 +1,14 @@
 const express = require('express');
 const router = express.Router();
 const { protect } = require('../middleware/authMiddleware');
+const {
+  addToWishlist,
+  getWishlist,
+  removeFromWishlist,
+} = require('../controllers/wishlistController');
 
-// TODO: save, remove, get wishlist
-router.get('/', protect, (req, res) => {
-  res.json({ message: 'Wishlist routes working — build CRUD here' });
-});
+router.post('/', protect, addToWishlist);
+router.get('/', protect, getWishlist);
+router.delete('/:destinationId', protect, removeFromWishlist);
 
 module.exports = router;
