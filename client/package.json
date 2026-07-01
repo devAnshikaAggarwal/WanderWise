@@ -1,7 +1,11 @@
 {
   "name": "wanderwise-client",
   "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
   "type": "module",
+  "main": "vite.config.js",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
