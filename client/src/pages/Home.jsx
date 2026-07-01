@@ -1,10 +1,17 @@
-function Home() {
+import React from "react";
+import SearchBar from "../components/SearchBar";
+import "../styles/Home.css";
+
+const Home = () => {
   return (
-    <div style={{ padding: '40px', minHeight: '60vh' }}>
-      <h1 style={{ fontFamily: 'Georgia, serif', color: '#3D1A0E' }}>Home</h1>
-      <p style={{ color: '#993C1D' }}>Build this page here.</p>
+    <div className="home">
+      <div className="hero">
+        <h1>Explore the World</h1>
+        <p>roam smart. go far.</p>
+        <SearchBar />
+      </div>
     </div>
   );
-}
+};
 
 export default Home;

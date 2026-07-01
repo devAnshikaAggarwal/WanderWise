@@ -1,0 +1,39 @@
+.dest-page {
+  background: #fff8f5;
+  min-height: 100vh;
+  padding: 40px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #f0997b;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.03);
+}
+
+.card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.card h3 {
+  margin: 10px;
+  color: #3d1a0e;
+}
+
+.card p {
+  margin: 0 10px 10px;
+  color: #d85a30;
+}
