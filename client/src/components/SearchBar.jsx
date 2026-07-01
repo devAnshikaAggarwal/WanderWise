@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function SearchBar() {
-  const [query, setQuery] = useState("");
+function SearchBar({ defaultValue = "", placeholder = "Search destinations..." }) {
+  const [query, setQuery] = useState(defaultValue);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    setQuery(defaultValue);
+  }, [defaultValue]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
