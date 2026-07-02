@@ -78,45 +78,6 @@ const sliderImages = [
   }
 ];
 
-const offers = [
-  {
-    title: "Early bird discounts",
-    description: "Save up to 25% when you book your next trip in advance.",
-    badge: "Limited time"
-  },
-  {
-    title: "Flexible cancellations",
-    description: "Change your plans easily with flexible refund options.",
-    badge: "Safe booking"
-  },
-  {
-    title: "Local experience guides",
-    description: "Enjoy curated local guides for every destination.",
-    badge: "Trusted"
-  }
-];
-
-const testimonials = [
-  {
-    name: "Asha K.",
-    role: "Frequent Traveler",
-    quote: "WanderWise made planning my trip effortless. Every recommendation felt personalized and reliable.",
-    stars: 5
-  },
-  {
-    name: "Rohan P.",
-    role: "Weekend Explorer",
-    quote: "Great offers and a smooth booking experience. I loved how easy it was to find perfect destinations.",
-    stars: 5
-  },
-  {
-    name: "Mira S.",
-    role: "Family Planner",
-    quote: "The customer support and travel suggestions were excellent. We felt confident choosing WanderWise.",
-    stars: 5
-  }
-];
-
 const Home = () => {
   const [slideIndex, setSlideIndex] = useState(0);
 
@@ -176,51 +137,6 @@ const Home = () => {
               <div className="featured-card-content">
                 <h3>{place.name}</h3>
                 <p>{place.country}</p>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="offer-section">
-        <div className="section-heading">
-          <div>
-            <p className="section-label">Special offers</p>
-            <h2>Travel perks designed for every journey</h2>
-          </div>
-        </div>
-
-        <div className="offer-grid">
-          {offers.map((offer) => (
-            <article className="offer-card" key={offer.title}>
-              <span className="offer-badge">{offer.badge}</span>
-              <h3>{offer.title}</h3>
-              <p>{offer.description}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="trust-section">
-        <div className="section-heading">
-          <div>
-            <p className="section-label">Why customers love WanderWise</p>
-            <h2>Designed to make travel easy and enjoyable</h2>
-          </div>
-        </div>
-
-        <div className="testimonials-grid">
-          {testimonials.map((testimonial) => (
-            <article className="testimonial-card" key={testimonial.name}>
-              <div className="testimonial-copy">
-                <p>“{testimonial.quote}”</p>
-              </div>
-              <div className="testimonial-meta">
-                <div>
-                  <h3>{testimonial.name}</h3>
-                  <p>{testimonial.role}</p>
-                </div>
-                <div className="testimonial-stars">{Array(testimonial.stars).fill("★").join("")}</div>
               </div>
             </article>
           ))}
