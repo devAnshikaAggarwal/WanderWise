@@ -1,6 +1,10 @@
 import React from "react";
 
 const Navbar = () => {
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+
+  const handleLinkClick = () => setIsMenuOpen(false);
+
   return (
     <nav className="navbar">
       <div className="navbar-left">
@@ -22,18 +26,33 @@ const Navbar = () => {
       </div>
 
       <div className="nav-actions">
-        <a className="icon-card" href="#contact" aria-label="Contact">
-          <span className="icon-symbol">📩</span>
-          <span className="icon-text">Contact</span>
-        </a>
-        <a className="icon-card" href="#privacy" aria-label="Privacy Policy">
-          <span className="icon-symbol">🔒</span>
-          <span className="icon-text">Privacy</span>
-        </a>
-        <a className="icon-card" href="#terms" aria-label="Terms">
-          <span className="icon-symbol">📄</span>
-          <span className="icon-text">Terms</span>
-        </a>
+        <button
+          className={`menu-toggle ${isMenuOpen ? "active" : ""}`}
+          onClick={() => setIsMenuOpen((prev) => !prev)}
+          aria-label="Open menu"
+          aria-expanded={isMenuOpen}
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <div className={`nav-menu-panel ${isMenuOpen ? "open" : ""}`}>
+          <div className="menu-section">
+            <p className="menu-label">Language</p>
+            <div className="language-switch">
+              <button className="lang-chip active">Hindi</button>
+              <button className="lang-chip">English</button>
+            </div>
+          </div>
+
+          <div className="menu-section">
+            <a href="#contact" className="menu-link" onClick={handleLinkClick}>Contact Us</a>
+            <a href="#privacy" className="menu-link" onClick={handleLinkClick}>Privacy Policy</a>
+            <a href="#terms" className="menu-link" onClick={handleLinkClick}>Terms & Services</a>
+            <a href="/login" className="menu-link" onClick={handleLinkClick}>Agent Login</a>
+          </div>
+        </div>
       </div>
     </nav>
   );

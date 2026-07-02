@@ -5,22 +5,52 @@
 }
 
 .dest-header {
-  padding: 2rem 1.25rem;
-  background: linear-gradient(180deg, rgba(182, 93, 86, 0.15), rgba(250, 248, 246, 0.95));
-  border-radius: 28px;
-  border: 1px solid rgba(182, 93, 86, 0.12);
+  padding: 2rem 1.5rem;
+  background: linear-gradient(180deg, rgba(182, 93, 86, 0.14), rgba(253, 247, 241, 0.95));
+  border-radius: 32px;
+  border: 1px solid rgba(182, 93, 86, 0.14);
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
   justify-content: space-between;
   gap: 1rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 .dest-header .search-bar {
   width: 100%;
   max-width: 420px;
   margin-top: 0.75rem;
+}
+
+.dest-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(160px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.stat-card {
+  background: #ffffff;
+  padding: 1.4rem 1.25rem;
+  border: 1px solid rgba(182, 93, 86, 0.12);
+  border-radius: 24px;
+  text-align: center;
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.05);
+}
+
+.stat-value {
+  display: block;
+  font-size: 2rem;
+  font-weight: 800;
+  color: #3d1a0e;
+  margin-bottom: 0.35rem;
+}
+
+.stat-label {
+  display: block;
+  color: #7b5549;
+  font-size: 0.95rem;
 }
 
 .dest-header .search-bar input {
