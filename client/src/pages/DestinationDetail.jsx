@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { getDestination } from "../services/destinationService";
 import { addWishlist } from "../services/wishlistService";
 
@@ -8,70 +8,95 @@ const fallback =
 
 export default function DestinationDetail() {
   const { id } = useParams();
-
+  const navigate = useNavigate();
   const [destination, setDestination] = useState(null);
+  const [saving, setSaving] = useState(false);
+  const [saved, setSaved] = useState(false);
 
   useEffect(() => {
     async function load() {
       const data = await getDestination(id);
       setDestination(data);
     }
-
     load();
   }, [id]);
 
-  if (!destination) return <h2 style={{ padding: 40 }}>Loading...</h2>;
+  if (!destination) {
+    return <p className="page-status">Loading destination...</p>;
+  }
+
   async function saveWishlist() {
     try {
+      setSaving(true);
       await addWishlist(destination._id);
-      alert("Added to Wishlist");
+      setSaved(true);
     } catch (err) {
-      alert(err.response?.data?.message);
+      alert(err.response?.data?.message || "Could not add to wishlist");
+    } finally {
+      setSaving(false);
     }
   }
+
   return (
-    <div className="container">
-      <img
-        className="detail-image"
-        src={destination.image || fallback}
-        alt={destination.name}
-      />
-
-      <h1>{destination.name}</h1>
-
-      <h3>{destination.country}</h3>
-
-      <p>{destination.description}</p>
-
-      <div className="detail-info">
-        <div>
-          <strong>Best Time</strong>
-          <p>{destination.bestTime}</p>
-        </div>
-
-        <div>
-          <strong>Climate</strong>
-          <p>{destination.climate}</p>
-        </div>
-
-        <div>
-          <strong>Latitude</strong>
-          <p>{destination.coordinates?.lat}</p>
-        </div>
-
-        <div>
-          <strong>Longitude</strong>
-          <p>{destination.coordinates?.lng}</p>
+    <div className="detail-page">
+      {/* ===== HERO BANNER ===== */}
+      <div className="detail-hero">
+        <img src={destination.image || fallback} alt={destination.name} />
+        <div className="detail-hero-overlay">
+          <div className="container">
+            <button className="detail-back" onClick={() => navigate(-1)}>
+              ← Back
+            </button>
+            <h1>{destination.name}</h1>
+            <p className="detail-country">📍 {destination.country}</p>
+          </div>
         </div>
       </div>
 
-      <Link className="btn-primary" to="/trip-planner">
-        Plan Trip
-      </Link>
+      {/* ===== BODY ===== */}
+      <div className="container detail-body">
+        <div className="detail-main">
+          <h2>About this destination</h2>
+          <p className="detail-desc">{destination.description}</p>
 
-      <button className="btn-outline" onClick={saveWishlist}>
-        ❤ Save to Wishlist
-      </button>
+          <div className="detail-info">
+            <div className="detail-info-card">
+              <span className="detail-info-icon">🗓</span>
+              <strong>Best Time</strong>
+              <p>{destination.bestTime || "—"}</p>
+            </div>
+            <div className="detail-info-card">
+              <span className="detail-info-icon">🌤</span>
+              <strong>Climate</strong>
+              <p>{destination.climate || "—"}</p>
+            </div>
+            <div className="detail-info-card">
+              <span className="detail-info-icon">🧭</span>
+              <strong>Coordinates</strong>
+              <p>
+                {destination.coordinates?.lat ?? "—"},{" "}
+                {destination.coordinates?.lng ?? "—"}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* ===== ACTION CARD ===== */}
+        <aside className="detail-actions">
+          <h3>Love this place?</h3>
+          <p>Add it to a trip or save it for later.</p>
+          <Link className="btn-primary detail-action-btn" to="/trip-planner">
+            🧳 Plan a Trip
+          </Link>
+          <button
+            className="btn-outline detail-action-btn"
+            onClick={saveWishlist}
+            disabled={saving || saved}
+          >
+            {saved ? "✓ Saved to Wishlist" : saving ? "Saving..." : "❤ Save to Wishlist"}
+          </button>
+        </aside>
+      </div>
     </div>
   );
 }

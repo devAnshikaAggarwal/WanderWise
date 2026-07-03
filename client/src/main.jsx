@@ -6,6 +6,10 @@ import App from "./App";
 import { AuthProvider } from "./context/AuthContext";
 
 import "./styles/global.css";
+import "./styles/navbar.css";
+import "./styles/footer.css";
+import "./styles/home.css";
+import "./styles/destinations.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
