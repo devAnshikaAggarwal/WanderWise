@@ -35,6 +35,12 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+html,
+body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
 h1, h2, h3, h4 {
   font-family: Georgia, "Times New Roman", serif;
   color: var(--dark2);

@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import logo from "../assets/logo/logo.png";
 
 function Footer() {
   const year = new Date().getFullYear();
@@ -9,7 +10,10 @@ function Footer() {
         <div className="footer-grid">
           {/* Brand */}
           <div className="footer-brand">
-            <h3 className="footer-logo">🌍 WanderWise</h3>
+            <div className="footer-logo-row">
+              <img src={logo} alt="WanderWise" className="footer-logo-img" />
+              <h3 className="footer-logo">WanderWise</h3>
+            </div>
             <p className="footer-tagline">
               Your smart travel companion — discover destinations, plan
               itineraries, and manage every trip in one place.

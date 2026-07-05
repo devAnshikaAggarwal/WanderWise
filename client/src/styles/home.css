@@ -1,4 +1,116 @@
 /*==========================
+HERO
+==========================*/
+
+.hero {
+  padding: 72px 0;
+}
+
+.hero-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px;
+}
+
+.hero-left {
+  flex: 1.15;
+}
+
+.hero-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.hero-right img {
+  width: 100%;
+  max-width: 440px;
+  background: #fff;
+  border: 1px solid #f0e4dd;
+  border-radius: 28px;
+  padding: 36px;
+  box-shadow: var(--shadow);
+}
+
+.hero-badge {
+  display: inline-block;
+  background: var(--surface);
+  color: var(--accent);
+  padding: 10px 18px;
+  border-radius: 40px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.hero h1 {
+  font-family: Georgia, serif;
+  font-size: 56px;
+  line-height: 1.15;
+  color: var(--dark2);
+  margin-bottom: 22px;
+}
+
+.hero p {
+  font-size: 18px;
+  color: #666;
+  line-height: 1.8;
+  margin-bottom: 32px;
+  max-width: 520px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 26px;
+  flex-wrap: wrap;
+  row-gap: 14px;
+}
+
+/*==========================
+STATS STRIP
+==========================*/
+
+.stats {
+  padding: 20px 0 80px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.stat-card {
+  padding: 28px 12px;
+  text-align: center;
+  transition: background 0.3s ease;
+}
+
+.stat-card:not(:last-child) {
+  border-right: 1px solid #f0e4dd;
+}
+
+.stat-card:hover {
+  background: #fff8f5;
+}
+
+.stat-card h2 {
+  font-family: Georgia, serif;
+  font-size: 34px;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+
+.stat-card p {
+  font-size: 14px;
+  color: #666;
+}
+
+/*==========================
 SECTION HEADINGS
 ==========================*/
 
@@ -39,7 +151,10 @@ FEATURES
   border: 1px solid #e5e7eb;
   border-radius: 20px;
   padding: 32px 28px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
 }
 
 .feature-card:hover {
@@ -109,7 +224,9 @@ CTA BAND
   padding: 15px 34px;
   border-radius: 999px;
   text-decoration: none;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
 .btn-cta:hover {
@@ -118,22 +235,75 @@ CTA BAND
 }
 
 /*==========================
-FEATURES / CTA RESPONSIVE
+RESPONSIVE
 ==========================*/
 
 @media (max-width: 900px) {
+  .hero-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 40px;
+  }
+
+  .hero p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-buttons {
+    justify-content: center;
+  }
+
+  .hero-right img {
+    max-width: 360px;
+    padding: 28px;
+  }
+
   .features-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 600px) {
+  .hero {
+    padding: 44px 0;
+  }
+
+  .hero h1 {
+    font-size: 34px;
+  }
+
+  .hero-container {
+    gap: 32px;
+  }
+
+  .hero-right img {
+    max-width: 300px;
+    padding: 22px;
+  }
+
+  .stat-card {
+    padding: 18px 6px;
+  }
+
+  .stat-card h2 {
+    font-size: 22px;
+  }
+
+  .stat-card p {
+    font-size: 11.5px;
+  }
+
   .features-grid {
     grid-template-columns: 1fr;
   }
 
+  .feature-card {
+    padding: 26px 22px;
+  }
+
   .section-head h2,
   .cta-inner h2 {
-    font-size: 28px;
+    font-size: 27px;
   }
 }

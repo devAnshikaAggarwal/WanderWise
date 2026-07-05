@@ -14,6 +14,13 @@ function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [menuOpen]);
+
   const closeMenu = () => setMenuOpen(false);
 
   return (
@@ -35,15 +42,29 @@ function Navbar() {
         </button>
 
         <nav className={`nav-links ${menuOpen ? "show" : ""}`}>
-          <NavLink to="/" onClick={closeMenu}>Home</NavLink>
-          <NavLink to="/destinations" onClick={closeMenu}>Destinations</NavLink>
-          <NavLink to="/trip-planner" onClick={closeMenu}>Trip Planner</NavLink>
-          <NavLink to="/emergency" onClick={closeMenu}>Emergency</NavLink>
+          <NavLink to="/" onClick={closeMenu}>
+            Home
+          </NavLink>
+          <NavLink to="/destinations" onClick={closeMenu}>
+            Destinations
+          </NavLink>
+          <NavLink to="/trip-planner" onClick={closeMenu}>
+            Trip Planner
+          </NavLink>
+          <NavLink to="/emergency" onClick={closeMenu}>
+            Emergency
+          </NavLink>
           {user && (
             <>
-              <NavLink to="/wishlist" onClick={closeMenu}>Wishlist</NavLink>
-              <NavLink to="/dashboard" onClick={closeMenu}>Dashboard</NavLink>
-              <NavLink to="/profile" onClick={closeMenu}>Profile</NavLink>
+              <NavLink to="/wishlist" onClick={closeMenu}>
+                Wishlist
+              </NavLink>
+              <NavLink to="/dashboard" onClick={closeMenu}>
+                Dashboard
+              </NavLink>
+              <NavLink to="/profile" onClick={closeMenu}>
+                Profile
+              </NavLink>
             </>
           )}
 
@@ -53,7 +74,11 @@ function Navbar() {
                 <NavLink to="/login" className="login-btn" onClick={closeMenu}>
                   Login
                 </NavLink>
-                <NavLink to="/register" className="register-btn" onClick={closeMenu}>
+                <NavLink
+                  to="/register"
+                  className="register-btn"
+                  onClick={closeMenu}
+                >
                   Register
                 </NavLink>
               </>
