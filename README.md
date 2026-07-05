@@ -171,12 +171,12 @@ Open **http://localhost:5173** 🎉
 | Name | Role |
 |---|---|
 | **Anshika Aggarwal** | Team Lead · Backend Architecture · UI/UX Polish & Integration |
-| _Name_ | Frontend — Pages & Components |
-| _Name_ | Frontend — Styling & Responsive Design |
-| _Name_ | Backend — REST APIs & Controllers |
-| _Name_ | Database — Schema Design & Seeding |
-| _Name_ | Authentication & Route Protection |
-| _Name_ | Testing, Documentation & Deployment |
+| Sneha Sharma | Frontend — Pages & Components |
+| Arshdeep Kaur | Frontend — Styling & Responsive Design |
+| Gayatri Sharma | Backend — REST APIs & Controllers |
+| Yuvanshi Thakur | Database — Schema Design & Seeding |
+| Aditya Bishnoi | Authentication & Route Protection |
+| Rajni Banger | Testing, Documentation & Deployment |
 
 ## 📄 License
 
