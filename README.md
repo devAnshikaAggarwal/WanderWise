@@ -1,84 +1,183 @@
-# WanderWise 🏔️
+# 🌍 WanderWise — Smart Travel Planner
 
-Full stack travel planning website — search destinations, plan itineraries, track budgets, and get email reminders before your trip.
+> **Roam smart. Go far.**
 
-**Tagline:** roam smart. go far.
+WanderWise is a full-stack travel planning platform that helps travellers discover destinations, plan trips day-by-day, track budgets and expenses, build packing checklists, and keep emergency information handy — all in one place, wrapped in a warm, modern UI.
 
-## Tech Stack
-- MongoDB — database
-- Express.js — backend REST API
-- React — frontend
-- Node.js — server
-- JWT — authentication
-- Nodemailer — email reminders
-- Leaflet.js — interactive maps
-- OpenWeatherMap API — weather data
+---
 
-## Project Structure
+## ✨ Features
+
+| Feature | Description |
+|---|---|
+| 🗺️ **Destination Explorer** | Browse 12+ curated destinations with real photography, climate info, best travel seasons and live search by place or country |
+| 🧳 **Trip Planner** | Create trips with a live destination preview, date validation and instant dashboard integration |
+| 📊 **Personal Dashboard** | Greeting header, travel stats (total / upcoming / completed trips) and trip cards with quick actions |
+| 📋 **Day-wise Itinerary** | Timeline view with day badges, time chips and per-activity notes |
+| 💰 **Budget Manager** | Set trip budgets, log categorised expenses, and watch a colour-coded progress bar (green → amber → red) as spending approaches the limit |
+| ✅ **Smart Checklist** | Category-grouped packing lists with one-tap check-off, progress tracking and optimistic UI updates |
+| ❤️ **Wishlist** | Save dream destinations from any details page and plan them later |
+| 🆘 **Emergency Assistance** | Search real emergency numbers (police / ambulance / fire / tourist helpline) by **country or city** — city names resolve through the destinations database |
+| 🔐 **Authentication** | JWT-based register/login with protected routes, split-screen auth pages and show/hide password |
+| 📱 **Responsive Design** | Glass navbar with mobile drawer, adaptive grids and mobile-tuned layouts across every page |
+
+---
+
+## 🎨 Design — "Sunset Coral" Theme
+
+A warm, travel-inspired palette used consistently across the app:
+
+| Token | Hex |
+|---|---|
+| Primary | `#D85A30` |
+| Dark | `#993C1D` |
+| Heading | `#3D1A0E` |
+| Accent Soft | `#F0997B` |
+| Background | `#FFF8F5` |
+| Surface | `#FAECE7` |
+
+**Typography:** Georgia (headings) · Segoe UI (body)
+**Style language:** glassmorphism navbar, soft-shadow cards, lift-on-hover animations, pill buttons — inspired by Airbnb, Booking.com and TripAdvisor.
+
+---
+
+## 🛠️ Tech Stack
+
+**Frontend**
+- React 18 + Vite
+- React Router
+- Axios
+- Plain modular CSS (one stylesheet per page — no frameworks)
+
+**Backend**
+- Node.js + Express.js
+- MongoDB Atlas + Mongoose
+- JWT authentication + bcrypt password hashing
+
+---
+
+## 📁 Project Structure
 
 ```
-wanderwise/
-├── client/                # React frontend
+Wanderwise/
+├── client/                  # React frontend (Vite)
 │   └── src/
-│       ├── pages/         # Page-level components (Home, Login, TripPlanner...)
-│       ├── components/    # Reusable components (SearchBar, TripCard...)
-│       ├── context/       # Global state (AuthContext, TripContext...)
-│       ├── services/      # API call functions
-│       ├── assets/logo/   # Logo files
-│       └── styles/        # CSS/theme files
+│       ├── assets/          # logo & images
+│       ├── components/      # Navbar, Footer, ScrollToTop, ProtectedRoute
+│       ├── context/         # Auth context
+│       ├── hooks/           # useAuth
+│       ├── pages/           # Home, Destinations, Dashboard, Budget, ...
+│       ├── services/        # Axios API modules per feature
+│       └── styles/          # one CSS file per page + global.css
 │
-└── server/                # Node + Express backend
-    ├── models/            # Mongoose schemas (User, Trip, Destination...)
-    ├── routes/            # Express routes (authRoutes, tripRoutes...)
-    ├── controllers/        # Route logic
-    ├── middleware/         # Auth middleware, error handlers
-    └── config/             # Database connection, env config
+└── server/                  # Express backend
+    ├── config/              # DB connection
+    ├── controllers/         # route logic
+    ├── middleware/          # JWT auth guard
+    ├── models/              # Mongoose schemas
+    ├── routes/              # REST endpoints
+    ├── seed.js              # base data seeder
+    ├── seedEmergency.js     # emergency numbers for 10 countries
+    └── updateDestinations.js# destination images + extra destinations
 ```
 
-## Team Roles
+---
 
-| Member | Role |
-|---|---|
-| Anshika Aggarwal | Team Lead + Backend (API, DB, Auth, Deployment) |
-| Sneha Sharma | Frontend — Auth pages (Login, Register) |
-| Yuvanshi Thakur | Frontend — Home & Search |
-| Arashdeep Kaur | Frontend — Trip Planner & Itinerary |
-| Gayatri Sharma | Frontend — Budget & Wishlist |
-| Aditya Bishnoi | Frontend — Extras (Emergency, Dashboard) & Testing |
+## 🚀 Getting Started
 
-## Color Theme — Sunset Coral
+### Prerequisites
+- [Node.js](https://nodejs.org) 18+
+- A MongoDB connection string (MongoDB Atlas)
 
-| Name | Hex |
-|---|---|
-| Darkest | `#1A0A05` |
-| Dark/Navbar | `#3D1A0E` |
-| Primary | `#993C1D` |
-| Brand | `#D85A30` |
-| Accent | `#F0997B` |
-| Surface/BG | `#FAECE7` / `#FFF8F5` |
+### 1. Clone
 
-Heading font: Georgia serif, bold. Body font: Arial / system-ui.
+```bash
+git clone https://github.com/devAnshikaAggarwal/WanderWise.git
+cd WanderWise
+```
 
-## Getting Started
+### 2. Backend
 
-### Backend
 ```bash
 cd server
 npm install
+```
+
+Create `server/.env` from the provided example:
+
+```bash
+cp .env.example .env
+```
+
+Fill in your values:
+
+```env
+MONGO_URI=your-mongodb-connection-string
+JWT_SECRET=any-long-random-string
+PORT=5000
+```
+
+Seed the database (one time):
+
+```bash
+node seed.js
+node updateDestinations.js
+node seedEmergency.js
+```
+
+Start the API:
+
+```bash
 npm run dev
 ```
 
-### Frontend
+✅ Wait for `Server running` and `MongoDB connected`.
+
+### 3. Frontend (new terminal)
+
 ```bash
 cd client
 npm install
 npm run dev
 ```
 
-## Features
+Open **http://localhost:5173** 🎉
 
-**Phase 1 (Core)** — Auth, Search, Destination Details, Trip Planner, Daily Itinerary, Budget Calculator, Wishlist, Travel Checklist
+> ℹ️ Both terminals must stay running — one for the API, one for the app.
 
-**Phase 2** — Interactive Map, Weather Forecast, Currency Converter, Emergency Contacts, Expense Tracker, My Trips Dashboard, Email Reminders
+---
 
-**Phase 3** — Photo Gallery, Analytics, Travel Journal, Profile & Settings
+## 🔌 API Overview
+
+| Method | Endpoint | Description | Auth |
+|---|---|---|---|
+| POST | `/api/auth/register` | Create account | — |
+| POST | `/api/auth/login` | Login, returns JWT | — |
+| GET | `/api/destinations` | List destinations (`?search=`) | — |
+| GET | `/api/destinations/:id` | Destination details | — |
+| GET/POST/PUT/DELETE | `/api/trips` | Trip CRUD | 🔒 |
+| GET/POST | `/api/budget/:tripId` | Budget + expenses | 🔒 |
+| GET/POST/DELETE | `/api/itinerary/:tripId` | Day-wise activities | 🔒 |
+| GET/POST/PUT/DELETE | `/api/checklist/:tripId` | Packing checklist | 🔒 |
+| GET/POST/DELETE | `/api/wishlist` | Saved destinations | 🔒 |
+| GET | `/api/emergency?country=` | Emergency numbers by country | — |
+
+🔒 = requires `Authorization: Bearer <token>`
+
+---
+
+## 👥 Team
+
+| Name | Role |
+|---|---|
+| **Anshika Aggarwal** | Team Lead · Backend Architecture · UI/UX Polish & Integration |
+| _Name_ | Frontend — Pages & Components |
+| _Name_ | Frontend — Styling & Responsive Design |
+| _Name_ | Backend — REST APIs & Controllers |
+| _Name_ | Database — Schema Design & Seeding |
+| _Name_ | Authentication & Route Protection |
+| _Name_ | Testing, Documentation & Deployment |
+
+## 📄 License
+
+Built as an academic project. All destination photography via [Unsplash](https://unsplash.com).
