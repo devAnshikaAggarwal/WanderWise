@@ -31,7 +31,9 @@ ADD FORM
   border-radius: 10px;
   padding: 11px 13px;
   outline: none;
-  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
 .itinerary-form input:focus {
@@ -116,7 +118,9 @@ TIMELINE
   border: 1px solid #e5e7eb;
   border-radius: 16px;
   padding: 18px 44px 18px 20px;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
 .timeline-card:hover {

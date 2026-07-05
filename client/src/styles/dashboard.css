@@ -45,7 +45,9 @@ STAT TILES
   border: 1px solid #e5e7eb;
   border-radius: 18px;
   padding: 22px 24px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .dash-stat:hover {
@@ -93,7 +95,9 @@ TRIP CARDS
   border: 1px solid #e5e7eb;
   border-radius: 20px;
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .trip-card:hover {
@@ -126,9 +130,15 @@ TRIP CARDS
   backdrop-filter: blur(6px);
 }
 
-.status-upcoming { color: #0369a1; }
-.status-ongoing { color: #b45309; }
-.status-completed { color: #15803d; }
+.status-upcoming {
+  color: #0369a1;
+}
+.status-ongoing {
+  color: #b45309;
+}
+.status-completed {
+  color: #15803d;
+}
 
 .trip-content {
   display: flex;
@@ -170,7 +180,9 @@ TRIP CARDS
   border-radius: 10px;
   text-decoration: none;
   white-space: nowrap;
-  transition: background 0.25s ease, transform 0.25s ease;
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease;
 }
 
 .action-btn:hover {
@@ -231,11 +243,19 @@ RESPONSIVE
 ==========================*/
 
 @media (max-width: 1000px) {
-  .dashboard-grid { grid-template-columns: repeat(2, 1fr); }
+  .dashboard-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 640px) {
-  .dashboard-grid { grid-template-columns: 1fr; }
-  .dashboard-stats { grid-template-columns: 1fr; }
-  .dashboard-header h1 { font-size: 27px; }
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+  .dashboard-stats {
+    grid-template-columns: 1fr;
+  }
+  .dashboard-header h1 {
+    font-size: 27px;
+  }
 }

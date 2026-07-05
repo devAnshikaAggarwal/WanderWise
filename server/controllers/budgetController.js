@@ -23,11 +23,9 @@ const createBudget = async (req, res) => {
 
     const existing = await Budget.findOne({ tripId: req.params.tripId });
     if (existing) {
-      return res
-        .status(400)
-        .json({
-          message: "Budget already exists for this trip. Use update instead.",
-        });
+      return res.status(400).json({
+        message: "Budget already exists for this trip. Use update instead.",
+      });
     }
 
     const budget = await Budget.create({

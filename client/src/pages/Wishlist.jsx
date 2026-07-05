@@ -43,7 +43,9 @@ export default function Wishlist() {
         <div className="empty-state">
           <span className="empty-icon">💭</span>
           <h2>Your Wishlist is Empty</h2>
-          <p>Browse destinations and tap "Save to Wishlist" on ones you love.</p>
+          <p>
+            Browse destinations and tap "Save to Wishlist" on ones you love.
+          </p>
           <Link className="btn-primary" to="/destinations">
             Explore Destinations
           </Link>

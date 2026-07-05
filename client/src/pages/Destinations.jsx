@@ -25,7 +25,7 @@ export default function Destinations() {
   const filtered = destinations.filter(
     (d) =>
       d.name.toLowerCase().includes(search.toLowerCase()) ||
-      d.country.toLowerCase().includes(search.toLowerCase())
+      d.country.toLowerCase().includes(search.toLowerCase()),
   );
 
   return (

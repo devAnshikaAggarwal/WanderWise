@@ -9,7 +9,9 @@
   -webkit-backdrop-filter: blur(14px);
   backdrop-filter: blur(14px);
   border-bottom: 1px solid rgba(229, 231, 235, 0.6);
-  transition: background 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    background 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .navbar-scrolled {
@@ -75,7 +77,9 @@
   padding: 8px 11px;
   border-radius: 8px;
   white-space: nowrap;
-  transition: color 0.25s ease, background 0.25s ease;
+  transition:
+    color 0.25s ease,
+    background 0.25s ease;
 }
 
 .nav-links > a:hover {
@@ -187,7 +191,9 @@
   width: 100%;
   background: #3d1a0e;
   border-radius: 2px;
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
 }
 
 .hamburger.open span:nth-child(1) {

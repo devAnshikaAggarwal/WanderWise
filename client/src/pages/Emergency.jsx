@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { getEmergencyContacts } from "../services/emergencyService";
+import { getDestinations } from "../services/destinationService";
 
 const DEFAULT_CONTACTS = [
   { title: "Police", number: "100", icon: "🚓" },
@@ -17,15 +18,31 @@ export default function Emergency() {
 
   async function search(e) {
     e.preventDefault();
-    if (!query.trim()) {
+    const q = query.trim();
+    if (!q) {
       setResult(null);
       setStatus("idle");
       return;
     }
     try {
       setStatus("loading");
-      const data = await getEmergencyContacts(query.trim());
-      const record = Array.isArray(data) ? data[0] : data;
+
+      // 1) try direct country match
+      let data = await getEmergencyContacts(q);
+      let record = Array.isArray(data) ? data[0] : data;
+
+      // 2) if no country matched, try city → country via destinations
+      if (!record) {
+        const destinations = await getDestinations();
+        const match = destinations.find((d) =>
+          d.name.toLowerCase().includes(q.toLowerCase()),
+        );
+        if (match) {
+          data = await getEmergencyContacts(match.country);
+          record = Array.isArray(data) ? data[0] : data;
+        }
+      }
+
       if (!record) {
         setResult(null);
         setStatus("notfound");
@@ -44,12 +61,18 @@ export default function Emergency() {
         { title: "Police", number: result.policeNo, icon: "🚓" },
         { title: "Ambulance", number: result.ambulanceNo, icon: "🚑" },
         { title: "Fire Brigade", number: result.fireNo, icon: "🚒" },
-        { title: "Tourist Helpline", number: result.touristHelpline, icon: "🧳" },
+        {
+          title: "Tourist Helpline",
+          number: result.touristHelpline,
+          icon: "🧳",
+        },
       ].filter((c) => c.number)
     : null;
 
   const showing = countryContacts || DEFAULT_CONTACTS;
-  const heading = result ? `Emergency Numbers — ${result.country}` : "Emergency Numbers — India";
+  const heading = result
+    ? `Emergency Numbers — ${result.country}`
+    : "Emergency Numbers — India";
 
   return (
     <div className="container emergency-page">
@@ -61,7 +84,7 @@ export default function Emergency() {
 
         <form className="emergency-search" onSubmit={search}>
           <input
-            placeholder="🔍  Search emergency numbers by country..."
+            placeholder="🔍  Search by country or city — e.g. Japan or Kyoto..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />

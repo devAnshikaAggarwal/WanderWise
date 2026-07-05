@@ -23,7 +23,9 @@ function Login() {
       login(user);
       navigate("/dashboard");
     } catch (err) {
-      setError(err.response?.data?.message || "Login failed. Please try again.");
+      setError(
+        err.response?.data?.message || "Login failed. Please try again.",
+      );
     }
     setLoading(false);
   };

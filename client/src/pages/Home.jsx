@@ -71,10 +71,22 @@ export default function Home() {
       {/* ===== STATS ===== */}
       <section className="stats">
         <div className="container stats-grid">
-          <div className="stat-card"><h2>100+</h2><p>Destinations</p></div>
-          <div className="stat-card"><h2>500+</h2><p>Trips Planned</p></div>
-          <div className="stat-card"><h2>20+</h2><p>Countries</p></div>
-          <div className="stat-card"><h2>24/7</h2><p>Travel Support</p></div>
+          <div className="stat-card">
+            <h2>100+</h2>
+            <p>Destinations</p>
+          </div>
+          <div className="stat-card">
+            <h2>500+</h2>
+            <p>Trips Planned</p>
+          </div>
+          <div className="stat-card">
+            <h2>20+</h2>
+            <p>Countries</p>
+          </div>
+          <div className="stat-card">
+            <h2>24/7</h2>
+            <p>Travel Support</p>
+          </div>
         </div>
       </section>
 
@@ -83,7 +95,9 @@ export default function Home() {
         <div className="container">
           <div className="section-head">
             <h2>Everything You Need to Travel Smart</h2>
-            <p>One platform for the entire journey — from dreaming to departure.</p>
+            <p>
+              One platform for the entire journey — from dreaming to departure.
+            </p>
           </div>
           <div className="features-grid">
             {features.map((f) => (
@@ -102,7 +116,9 @@ export default function Home() {
         <div className="container cta-inner">
           <h2>Ready for Your Next Adventure?</h2>
           <p>Join WanderWise and start planning your dream trip today.</p>
-          <Link to="/register" className="btn-cta">Get Started — It's Free</Link>
+          <Link to="/register" className="btn-cta">
+            Get Started — It's Free
+          </Link>
         </div>
       </section>
     </>

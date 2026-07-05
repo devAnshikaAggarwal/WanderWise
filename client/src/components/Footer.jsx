@@ -33,8 +33,8 @@ function Footer() {
           <div className="footer-col">
             <h4>Travel Tools</h4>
             <Link to="/budget">Budget Tracker</Link>
-            <Link to="/itinerary">Itinerary</Link>
-            <Link to="/checklist">Packing Checklist</Link>
+            <Link to="/dashboard">Itinerary</Link>
+            <Link to="/dashboard">Packing Checklist</Link>
             <Link to="/emergency">Emergency Contacts</Link>
           </div>
 

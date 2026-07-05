@@ -93,7 +93,11 @@ export default function DestinationDetail() {
             onClick={saveWishlist}
             disabled={saving || saved}
           >
-            {saved ? "✓ Saved to Wishlist" : saving ? "Saving..." : "❤ Save to Wishlist"}
+            {saved
+              ? "✓ Saved to Wishlist"
+              : saving
+                ? "Saving..."
+                : "❤ Save to Wishlist"}
           </button>
         </aside>
       </div>

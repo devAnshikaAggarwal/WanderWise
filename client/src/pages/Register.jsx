@@ -29,7 +29,9 @@ function Register() {
       login(user);
       navigate("/dashboard");
     } catch (err) {
-      setError(err.response?.data?.message || "Registration failed. Please try again.");
+      setError(
+        err.response?.data?.message || "Registration failed. Please try again.",
+      );
     }
     setLoading(false);
   };
@@ -39,7 +41,9 @@ function Register() {
       <div className="auth-brand">
         <img src={logo} alt="WanderWise" />
         <h2>Start your journey</h2>
-        <p>Join WanderWise and plan every trip with confidence — free forever.</p>
+        <p>
+          Join WanderWise and plan every trip with confidence — free forever.
+        </p>
       </div>
 
       <div className="auth-form-panel">

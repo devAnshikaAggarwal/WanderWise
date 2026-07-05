@@ -61,7 +61,9 @@ FORM
   border-radius: 12px;
   padding: 13px 15px;
   outline: none;
-  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
 .form-field input:focus,

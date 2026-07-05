@@ -8,7 +8,12 @@ import {
 } from "../services/checklistService";
 
 const CATEGORY_SUGGESTIONS = [
-  "Documents", "Clothes", "Toiletries", "Electronics", "Medicines", "Misc",
+  "Documents",
+  "Clothes",
+  "Toiletries",
+  "Electronics",
+  "Medicines",
+  "Misc",
 ];
 
 export default function Checklist() {
@@ -44,9 +49,7 @@ export default function Checklist() {
   async function toggle(item) {
     // optimistic update — flip instantly, sync in background
     setItems((prev) =>
-      prev.map((i) =>
-        i._id === item._id ? { ...i, checked: !i.checked } : i
-      )
+      prev.map((i) => (i._id === item._id ? { ...i, checked: !i.checked } : i)),
     );
     try {
       await updateItem(tripId, item._id, !item.checked);
@@ -74,14 +77,18 @@ export default function Checklist() {
     <div className="container checklist-page">
       <div className="page-head">
         <h1 className="page-title">Travel Checklist</h1>
-        <p className="page-subtitle">Pack smart — never forget the essentials.</p>
+        <p className="page-subtitle">
+          Pack smart — never forget the essentials.
+        </p>
       </div>
 
       {/* ===== PROGRESS ===== */}
       {items.length > 0 && (
         <div className="checklist-progress">
           <div className="checklist-progress-info">
-            <strong>{done} of {items.length} packed</strong>
+            <strong>
+              {done} of {items.length} packed
+            </strong>
             <span>{pct}%</span>
           </div>
           <div className="checklist-bar">

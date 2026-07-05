@@ -75,7 +75,7 @@ async function run() {
     console.log(
       res.matchedCount
         ? `✔ Updated image: ${name}`
-        : `✖ Not found (skipped): ${name}`
+        : `✖ Not found (skipped): ${name}`,
     );
   }
 

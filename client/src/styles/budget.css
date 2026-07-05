@@ -55,8 +55,12 @@ SUMMARY TILES + BAR
   color: #3d1a0e;
 }
 
-.budget-tile .spent { color: #d85a30; }
-.budget-tile .remaining { color: #15803d; }
+.budget-tile .spent {
+  color: #d85a30;
+}
+.budget-tile .remaining {
+  color: #15803d;
+}
 
 .budget-bar {
   height: 12px;
@@ -112,7 +116,9 @@ EXPENSE FORM
   border-radius: 10px;
   padding: 11px 13px;
   outline: none;
-  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
 .expense-form input:focus,
@@ -150,7 +156,9 @@ EXPENSE LIST
   border: 1px solid #e5e7eb;
   border-radius: 16px;
   padding: 14px 18px;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
 .expense-row:hover {

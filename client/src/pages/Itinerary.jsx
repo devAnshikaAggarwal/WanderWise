@@ -56,11 +56,10 @@ export default function Itinerary() {
   const dayKeys = Object.keys(items).sort(
     (a, b) =>
       Number(String(a).replace(/\D/g, "")) -
-      Number(String(b).replace(/\D/g, ""))
+      Number(String(b).replace(/\D/g, "")),
   );
 
-  const dayLabel = (key) =>
-    /day/i.test(key) ? key : `Day ${key}`;
+  const dayLabel = (key) => (/day/i.test(key) ? key : `Day ${key}`);
 
   return (
     <div className="container itinerary-page">
@@ -84,11 +83,7 @@ export default function Itinerary() {
           value={form.activity}
           onChange={update("activity")}
         />
-        <input
-          type="time"
-          value={form.time}
-          onChange={update("time")}
-        />
+        <input type="time" value={form.time} onChange={update("time")} />
         <input
           placeholder="Note (optional)"
           value={form.note}
