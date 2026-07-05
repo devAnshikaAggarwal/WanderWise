@@ -33,7 +33,14 @@ function App() {
           <Route path="/trip-planner" element={<TripPlanner />} />
           <Route path="/budget" element={<Budget />} />
           <Route path="/wishlist" element={<Wishlist />} />
-          <Route path="/checklist" element={<Checklist />} />
+          <Route
+            path="/checklist/:tripId"
+            element={
+              <ProtectedRoute>
+                <Checklist />
+              </ProtectedRoute>
+            }
+          />
           <Route
             path="/dashboard"
             element={

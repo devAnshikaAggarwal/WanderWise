@@ -1,0 +1,159 @@
+/*==========================
+EMERGENCY PAGE
+==========================*/
+
+.emergency-page {
+  padding: 56px 24px 90px;
+}
+
+.emergency-search {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.emergency-search input {
+  flex: 1;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  font-size: 15px;
+  color: #374151;
+  background: #fff;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 999px;
+  padding: 13px 22px;
+  outline: none;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.emergency-search input:focus {
+  border-color: #d85a30;
+  box-shadow: 0 0 0 4px rgba(216, 90, 48, 0.12);
+}
+
+.emergency-note {
+  margin-top: 14px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #b45309;
+  background: #fef3c7;
+  display: inline-block;
+  padding: 8px 18px;
+  border-radius: 999px;
+}
+
+.emergency-heading {
+  font-family: Georgia, serif;
+  font-size: 24px;
+  color: #3d1a0e;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/*==========================
+CARDS
+==========================*/
+
+.emergency-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 940px;
+  margin: 0 auto;
+}
+
+.emergency-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 20px;
+  padding: 30px 24px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.emergency-card:hover {
+  transform: translateY(-6px);
+  border-color: #f0997b;
+  box-shadow: 0 16px 38px rgba(216, 90, 48, 0.14);
+}
+
+.emergency-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  font-size: 30px;
+  background: #faece7;
+  border-radius: 50%;
+  margin-bottom: 16px;
+}
+
+.emergency-card h2 {
+  font-family: Georgia, serif;
+  font-size: 19px;
+  color: #3d1a0e;
+  margin-bottom: 6px;
+}
+
+.emergency-card h3 {
+  font-family: Georgia, serif;
+  font-size: 30px;
+  color: #d85a30;
+  letter-spacing: 1px;
+  margin-bottom: 18px;
+}
+
+.btn-emergency {
+  display: inline-block;
+  background: linear-gradient(135deg, #d85a30, #993c1d);
+  color: #fff;
+  font-weight: 600;
+  font-size: 14.5px;
+  padding: 11px 26px;
+  border-radius: 999px;
+  text-decoration: none;
+  box-shadow: 0 5px 16px rgba(216, 90, 48, 0.35);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.btn-emergency:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(216, 90, 48, 0.45);
+}
+
+/*==========================
+TIP BAR
+==========================*/
+
+.emergency-tip {
+  max-width: 720px;
+  margin: 44px auto 0;
+  background: #faece7;
+  border: 1px solid #f0997b;
+  border-radius: 16px;
+  padding: 18px 24px;
+  font-size: 14.5px;
+  color: #3d1a0e;
+  text-align: center;
+}
+
+/*==========================
+RESPONSIVE
+==========================*/
+
+@media (max-width: 860px) {
+  .emergency-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 540px) {
+  .emergency-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .emergency-search {
+    flex-direction: column;
+  }
+}

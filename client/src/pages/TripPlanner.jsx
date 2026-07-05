@@ -3,10 +3,14 @@ import { useNavigate } from "react-router-dom";
 import { getDestinations } from "../services/destinationService";
 import { createTrip } from "../services/tripService";
 
+const fallback =
+  "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800";
+
 export default function TripPlanner() {
   const navigate = useNavigate();
-
   const [destinations, setDestinations] = useState([]);
+  const [error, setError] = useState("");
+  const [saving, setSaving] = useState(false);
 
   const [form, setForm] = useState({
     title: "",
@@ -20,82 +24,123 @@ export default function TripPlanner() {
       const data = await getDestinations();
       setDestinations(data);
     }
-
     load();
   }, []);
 
+  const update = (field) => (e) =>
+    setForm({ ...form, [field]: e.target.value });
+
+  const selected = destinations.find((d) => d._id === form.destinationId);
+
   const submit = async (e) => {
     e.preventDefault();
+    setError("");
+
+    if (!form.title.trim()) return setError("Please give your trip a title.");
+    if (!form.destinationId) return setError("Please select a destination.");
+    if (!form.startDate || !form.endDate)
+      return setError("Please choose both start and end dates.");
+    if (form.endDate < form.startDate)
+      return setError("End date can't be before the start date.");
 
     try {
+      setSaving(true);
       await createTrip(form);
-
-      alert("Trip Created Successfully");
-
       navigate("/dashboard");
     } catch (err) {
-      alert(err.response?.data?.message || "Unable to create trip");
+      setError(err.response?.data?.message || "Unable to create trip.");
+    } finally {
+      setSaving(false);
     }
   };
 
   return (
-    <div className="container">
-      <h1 className="page-title">Plan Your Trip</h1>
+    <div className="container trip-page">
+      <div className="page-head">
+        <h1 className="page-title">Plan Your Trip</h1>
+        <p className="page-subtitle">
+          Pick a destination, set your dates, and start organizing.
+        </p>
+      </div>
 
-      <form className="auth-card" onSubmit={submit}>
-        <input
-          placeholder="Trip Title"
-          value={form.title}
-          onChange={(e) =>
-            setForm({
-              ...form,
-              title: e.target.value,
-            })
-          }
-        />
+      <div className="trip-layout">
+        {/* ===== FORM ===== */}
+        <form className="trip-form" onSubmit={submit}>
+          {error && <div className="form-error">⚠ {error}</div>}
 
-        <select
-          value={form.destinationId}
-          onChange={(e) =>
-            setForm({
-              ...form,
-              destinationId: e.target.value,
-            })
-          }
-        >
-          <option value="">Select Destination</option>
+          <label className="form-field">
+            <span>Trip Title</span>
+            <input
+              placeholder="e.g. Summer in Bali"
+              value={form.title}
+              onChange={update("title")}
+            />
+          </label>
 
-          {destinations.map((d) => (
-            <option key={d._id} value={d._id}>
-              {d.name}
-            </option>
-          ))}
-        </select>
+          <label className="form-field">
+            <span>Destination</span>
+            <select
+              value={form.destinationId}
+              onChange={update("destinationId")}
+            >
+              <option value="">Select a destination...</option>
+              {destinations.map((d) => (
+                <option key={d._id} value={d._id}>
+                  {d.name}, {d.country}
+                </option>
+              ))}
+            </select>
+          </label>
 
-        <input
-          type="date"
-          value={form.startDate}
-          onChange={(e) =>
-            setForm({
-              ...form,
-              startDate: e.target.value,
-            })
-          }
-        />
+          <div className="form-row">
+            <label className="form-field">
+              <span>Start Date</span>
+              <input
+                type="date"
+                value={form.startDate}
+                onChange={update("startDate")}
+              />
+            </label>
 
-        <input
-          type="date"
-          value={form.endDate}
-          onChange={(e) =>
-            setForm({
-              ...form,
-              endDate: e.target.value,
-            })
-          }
-        />
+            <label className="form-field">
+              <span>End Date</span>
+              <input
+                type="date"
+                min={form.startDate}
+                value={form.endDate}
+                onChange={update("endDate")}
+              />
+            </label>
+          </div>
 
-        <button>Save Trip</button>
-      </form>
+          <button className="btn-primary trip-submit" disabled={saving}>
+            {saving ? "Creating Trip..." : "🧳 Create Trip"}
+          </button>
+        </form>
+
+        {/* ===== LIVE PREVIEW ===== */}
+        <aside className="trip-preview">
+          {selected ? (
+            <>
+              <img src={selected.image || fallback} alt={selected.name} />
+              <div className="trip-preview-body">
+                <h3>{selected.name}</h3>
+                <p className="trip-preview-country">📍 {selected.country}</p>
+                <p className="trip-preview-desc">{selected.description}</p>
+                <div className="destination-meta">
+                  <span>🗓 {selected.bestTime}</span>
+                  <span>🌤 {selected.climate}</span>
+                </div>
+              </div>
+            </>
+          ) : (
+            <div className="trip-preview-empty">
+              <span>🗺️</span>
+              <p>Select a destination to preview it here</p>
+            </div>
+          )}
+        </aside>
+      </div>
     </div>
   );
 }

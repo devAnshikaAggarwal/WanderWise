@@ -1,0 +1,148 @@
+/*==========================
+AUTH — LOGIN / REGISTER
+==========================*/
+
+.auth-page {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  min-height: calc(100vh - 72px);
+}
+
+/*==========================
+BRAND PANEL
+==========================*/
+
+.auth-brand {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 60px 40px;
+  background: linear-gradient(150deg, #faece7 0%, #fff8f5 55%, #faece7 100%);
+}
+
+.auth-brand img {
+  width: 200px;
+  margin-bottom: 28px;
+}
+
+.auth-brand h2 {
+  font-family: Georgia, serif;
+  font-size: 32px;
+  color: #3d1a0e;
+  margin-bottom: 12px;
+}
+
+.auth-brand p {
+  font-size: 16px;
+  color: #886;
+  color: #7a5c4e;
+  max-width: 340px;
+  line-height: 1.7;
+}
+
+/*==========================
+FORM PANEL
+==========================*/
+
+.auth-form-panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 30px;
+}
+
+.auth-form {
+  width: min(420px, 100%);
+}
+
+.auth-form h1 {
+  font-family: Georgia, serif;
+  font-size: 32px;
+  color: #3d1a0e;
+  margin-bottom: 6px;
+}
+
+.auth-sub {
+  color: #777;
+  margin-bottom: 26px;
+}
+
+.auth-submit {
+  width: 100%;
+  margin-top: 6px;
+}
+
+.auth-submit:disabled {
+  opacity: 0.7;
+  cursor: default;
+  transform: none;
+}
+
+.auth-switch {
+  text-align: center;
+  font-size: 14.5px;
+  color: #666;
+  margin-top: 22px;
+}
+
+.auth-switch a {
+  color: #d85a30;
+  font-weight: 700;
+}
+
+.auth-switch a:hover {
+  text-decoration: underline;
+}
+
+/*==========================
+PASSWORD TOGGLE
+==========================*/
+
+.password-wrap {
+  position: relative;
+}
+
+.password-wrap input {
+  padding-right: 50px;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  font-size: 17px;
+  cursor: pointer;
+  padding: 8px 10px;
+  border-radius: 8px;
+}
+
+.password-toggle:hover {
+  background: #faece7;
+}
+
+/*==========================
+RESPONSIVE
+==========================*/
+
+@media (max-width: 860px) {
+  .auth-page {
+    grid-template-columns: 1fr;
+  }
+
+  .auth-brand {
+    padding: 40px 24px 30px;
+  }
+
+  .auth-brand img {
+    width: 140px;
+  }
+
+  .auth-brand h2 {
+    font-size: 24px;
+  }
+}
